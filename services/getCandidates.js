@@ -2,8 +2,6 @@ const axios = require('axios');
 
 const { filterCpf, filterData, filterName, filterScore } = require('../utils/filters');
 
-const { cpfIsValid } = require('../utils/validations')
-
 const getCpfList = async () => {
   const { data } = await axios({
     method: 'GET',
@@ -24,7 +22,7 @@ const getCandidateByCpf = async (cpf) => {
   const name = filterName(data);
   const score = filterScore(data);
 
-  if (cpfIsValid(cpf)) return { name, score, CPF: cpf }
+  return { name, score, CPF: cpf }
 }
 
 const getCandidates= async () => {
@@ -32,7 +30,7 @@ const getCandidates= async () => {
 
   const candidates = await Promise.all(cpfList.map(getCandidateByCpf));
 
-  return candidates.filter((candidate) => candidate !== undefined);
+  return candidates;
 }
 
 
