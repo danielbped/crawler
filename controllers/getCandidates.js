@@ -9,9 +9,11 @@ const getCandidatesController = async (_req, res, next) => {
   try {
     const candidates = await getCandidates();
 
-    const candidatesDB = await Candidate.findAll();
-
     await populateCandidates(candidates);
+    
+    const candidatesDB = await Candidate.findAll({
+      attributes: { exclude: ['createdAt', 'updatedAt'] },
+    });
     
     res.status(statusCode.OK).json(candidatesDB);
   } catch (err) {
