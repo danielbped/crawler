@@ -7,6 +7,6 @@ const app = require('../index');
 
 chai.use(chaiHttp);
 
-describe('GET '/'', () => {
+describe('GET /', () => {
   
 })
