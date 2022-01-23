@@ -15,3 +15,5 @@ root(app);
 error(app);
 
 app.listen(PORT, () => console.log(`App listen on port ${PORT}`));
+
+module.exports = app;

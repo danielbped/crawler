@@ -11,11 +11,9 @@ const getCandidatesController = async (_req, res, next) => {
 
     const candidatesDB = await Candidate.findAll();
 
-    if (candidatesDB.length === 0) {
-      await populateCandidates(candidates);
-    }
-
-    res.status(statusCode.OK).json(candidates);
+    await populateCandidates(candidates);
+    
+    res.status(statusCode.OK).json(candidatesDB);
   } catch (err) {
     next (err);
   }

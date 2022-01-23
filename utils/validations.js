@@ -10,6 +10,9 @@ const cpfIsValid = (cpf) => {
   return true;
 }
 
+const cpfAlreadyExists = (cpf, candidates) => candidates.some((candidate) => candidate.CPF === cpf);
+
 module.exports = {
   cpfIsValid,
+  cpfAlreadyExists,
 }

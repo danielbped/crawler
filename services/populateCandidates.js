@@ -2,13 +2,15 @@ const { Candidate } = require('../models');
 
 const { getCandidates } = require('./getCandidates');
 
-const { cpfIsValid } = require('../utils/validations');
+const { cpfIsValid, cpfAlreadyExists } = require('../utils/validations');
 
 const populateCandidates = async () => {
   const candidates = await getCandidates();
 
   candidates.forEach((candidate) => {
-    Candidate.create({ ...candidate, validCPF: cpfIsValid(candidate.CPF) })
+    if (!cpfAlreadyExists(candidate.CPF, candidates)) {
+      Candidate.create({ ...candidate, validCPF: cpfIsValid(candidate.CPF) })
+    }
   })
 }
 
