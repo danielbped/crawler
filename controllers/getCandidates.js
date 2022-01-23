@@ -7,9 +7,7 @@ const { populateCandidates } = require('../services/populateCandidates');
 
 const getCandidatesController = async (_req, res, next) => {
   try {
-    const candidates = await getCandidates();
-
-    await populateCandidates(candidates);
+    await populateCandidates();
     
     const candidatesDB = await Candidate.findAll({
       attributes: {

@@ -2,14 +2,36 @@ const axios = require('axios');
 
 const { filterCpf, filterData, filterName, filterScore } = require('../utils/filters');
 
-const getCpfList = async () => {
+const cpfList = [];
+
+const INVALID_PAGE = 'Invalid page.';
+
+const getCpfOnPage = async (page) => {
   const { data } = await axios({
     method: 'GET',
-    url: `https://sample-university-site.herokuapp.com/approvals/1`,
+    url: `https://sample-university-site.herokuapp.com/approvals/${page}`,
   });
 
-  return filterCpf(data);
+  if (data !== INVALID_PAGE) cpfList.push(...filterCpf(data));
+
+  return data;
 };
+
+const getCpfList = async () => {
+  let page = 4670;
+
+  let dataValid = true;
+
+  while(dataValid) {
+    const data = await getCpfOnPage(page);
+
+    if (data === INVALID_PAGE) dataValid = false;
+    
+    page += 1
+  }
+
+  return cpfList;
+}
 
 const getCandidateByCpf = async (cpf) => {
   const response = await axios({
