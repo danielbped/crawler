@@ -14,10 +14,13 @@
     - [Arquitetura MSC](#msc)
     - [SOLID](#solid)
   - [REST API](#api)
+    - [GET /](#get)
   - [Desenvolvimento](#desenvolvimento)
     - [Fetch](#fetch)
     - [Filtragem de dados](#filtragem)
-
+    - [Higienização dos dados](#higienizacao)
+    - [Banco de dados](#banco)
+    - [Validações](#validacoes)
 # Licença <a name="licença"></a>
 
 Este projeto está sob licença do [MIT](https://github.com/danielbped/crawler/blob/main/LICENSE).
@@ -28,6 +31,7 @@ Este projeto está sob licença do [MIT](https://github.com/danielbped/crawler/b
   - [**MySQL**](https://www.npmjs.com/package/mysql2)
   - [**Axios**](https://axios-http.com/docs/intro)
   - [**Sequelize**](https://www.npmjs.com/package/sequelize)
+  - [**RegEx**](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Regular_Expressions)
   - [**Https Status Code**](https://www.npmjs.com/package/http-status-codes)
   - [**dotenv**](https://www.npmjs.com/package/dotenv)
   - [**Nodemon**](https://nodemon.io/)
@@ -132,7 +136,7 @@ Para saber mais sobre os princípios SOLID, acesse [este link](https://medium.co
 
 # REST API <a name="api"></a>
 
-## GET /
+## GET / <a name="get"></a>
 
 Para realizar a busca de todos os candidatos, a requisição não necessita de body nem headers, e a resposta terá um status 200 (**OK**), e será um array parecido com o seguinte:
 
@@ -175,5 +179,19 @@ Para realizar o fetch no [site](https://sample-university-site.herokuapp.com/app
 
 ## Filtragem de dados <a name="filtragem"></a>
 
-Para filtrar os dados obtidos, e recuperar apenas o CPF dos candidatos, foram utilizadas as expressões regulares ([RegEx](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Regular_Expressions)). O RegEx também foi utilizado para, ao acessar cada CPF, recuperar apenas o nome e a nota de cada candidato.
+Para filtrar os dados obtidos, e recuperar apenas o CPF dos candidatos, foram utilizadas as expressões regulares ([**RegEx**](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Regular_Expressions)). O RegEx também foi utilizado para, ao acessar cada CPF, recuperar apenas o nome e a nota de cada candidato.
 
+## Higienização dos dados <a name="higienizacao"></a>
+
+Tendo realizado as filtragens, foi necessário realizar uma higienização nos dados, pois mesmo após filtrar os dados com o RegEx, alguns dados ainda ficam com resquícios do HTML. Feito isso, mais algumas alterações foram feitas, como:
+  
+  - Remover acentuações, pontuações e caracteres especiais.
+  - Deixar todas as letras dos nomes dos candidatos em maiúsculo.
+
+## Banco de dados <a name="banco"></a>
+
+Após a higienização, é a hora de conectar e inserir os dados no banco de dados. O banco de dados utilizado foi o [**MySQL**](https://www.npmjs.com/package/mysql2), um banco de dados relacional, utilizando a [**ORM**](https://www.devmedia.com.br/orm-object-relational-mapper/19056) [**Sequelize**](https://www.npmjs.com/package/sequelize).
+
+## Validações <a name="validacoes"></a>
+
+Algumas funções de valiação foram necessárias, tanto como validar se o [CPF é válido](https://www.aceguarulhos.com.br/blog/como-saber-se-um-cpf-e-verdadeiro/#gsc.tab=0) quanto para verificar se o CPF já existe no banco de dados, não permitindo a inserção de CPFs repetidos.
