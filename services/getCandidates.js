@@ -4,6 +4,8 @@ const { filterCpf, filterData, filterName, filterScore } = require('../utils/fil
 
 const cpfList = [];
 
+let PAGE = 4670;
+
 const INVALID_PAGE = 'Invalid page.';
 
 const getCpfOnPage = async (page) => {
@@ -18,16 +20,14 @@ const getCpfOnPage = async (page) => {
 };
 
 const getCpfList = async () => {
-  let page = 4670;
-
   let dataValid = true;
 
   while(dataValid) {
-    const data = await getCpfOnPage(page);
+    const data = await getCpfOnPage(PAGE);
 
     if (data === INVALID_PAGE) dataValid = false;
-    
-    page += 1
+
+    PAGE += 1
   }
 
   return cpfList;
