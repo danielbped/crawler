@@ -1,5 +1,4 @@
 const statusCode = require('http-status-codes').StatusCodes;
-const { getCandidates } = require('../services/getCandidates');
 
 const { Candidate } = require('../models')
 

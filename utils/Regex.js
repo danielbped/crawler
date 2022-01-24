@@ -6,9 +6,12 @@ const NAME_REGEX = /Name:<\/b>.*</gmi;
 
 const SCORE_REGEX = /Score:<\/b>\s\d{2}\.\d{1,2}/gm;
 
+const SPECIAL_CHARACTERES_REGEX = /[^\w\s]/gi
+
 module.exports = {
   CPF_REGEX,
   CANDIDATE_REGEX,
   NAME_REGEX,
   SCORE_REGEX,
+  SPECIAL_CHARACTERES_REGEX,
 }
