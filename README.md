@@ -65,7 +65,7 @@ npm install
 ```
 
 ## .env
-- Na raiz do projeto, será necessário criar um arquivo **.env**, com as seguintes informações:
+- Para testes locais, é fundamental configurar um arquivo de variáveis de ambiente **.env** na raiz do projeto, este arquivo deverá possuir as seguintes informações:
 
 ```
 MYSQL_USER=root
