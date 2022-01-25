@@ -21,6 +21,8 @@
     - [Higienização dos dados](#higienizacao)
     - [Banco de dados](#banco)
     - [Validações](#validacoes)
+  - [Testes](#testes)
+    - [API](#teste-api)
 # Licença <a name="licença"></a>
 
 Este projeto está sob licença do [MIT](https://github.com/danielbped/crawler/blob/main/LICENSE).
@@ -32,6 +34,7 @@ Este projeto está sob licença do [MIT](https://github.com/danielbped/crawler/b
   - [**Axios**](https://axios-http.com/docs/intro)
   - [**Sequelize**](https://www.npmjs.com/package/sequelize)
   - [**RegEx**](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Regular_Expressions)
+  - [**Chai**](https://www.chaijs.com/)
   - [**Https Status Code**](https://www.npmjs.com/package/http-status-codes)
   - [**dotenv**](https://www.npmjs.com/package/dotenv)
   - [**Nodemon**](https://nodemon.io/)
@@ -115,7 +118,9 @@ Desta forma, o projeto está organizado e estruturado da seguinte forma:
             |- getCandidates.js
             |- populateCandidates.js
       |- tests
+            |- getCandidatesApi.test.js
       |- utils
+            |- errorMessages.js
             |- filters.js
             |- Regex.js
             |- validations.js
@@ -164,6 +169,12 @@ Para realizar a busca de todos os candidatos, a requisição não necessita de b
     ]
 ```
 
+- Caso haja algum problema com a requisição, surgirá uma mensagem de erro:
+  
+  - Status 500 (**INTERNAL_SERVER_ERROR**):
+      
+      - 'Internal Server Error. Try again.'
+
 # Desenvolvimento <a name="desenvolvimento" ></a>
 
 ## Fetch <a name="fetch"></a>
@@ -200,3 +211,37 @@ Após a higienização, é a hora de conectar e inserir os dados no banco de dad
 ## Validações <a name="validacoes"></a>
 
 Algumas funções de valiação foram necessárias, tanto como validar se o [CPF é válido](https://www.aceguarulhos.com.br/blog/como-saber-se-um-cpf-e-verdadeiro/#gsc.tab=0) quanto para verificar se o CPF já existe no banco de dados, não permitindo a inserção de CPFs repetidos.
+
+## Testes <a name="testes"></a>
+
+### API <a name="teste-api"></a>
+
+Para realizar os testes da resposta da requisição da API, foi utilizada a biblioteca [Chai](https://www.chaijs.com/), com 95% de cobertura.
+
+```
+------------------------|---------|----------|---------|---------|-------------------
+File                    | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+------------------------|---------|----------|---------|---------|-------------------
+All files               |   95.27 |    68.42 |   92.59 |   96.55 |                   
+ api                    |     100 |      100 |     100 |     100 |                   
+  index.js              |     100 |      100 |     100 |     100 |                   
+ config                 |     100 |      100 |     100 |     100 |                   
+  config.js             |     100 |      100 |     100 |     100 |                   
+ controllers            |   94.11 |      100 |     100 |   94.11 |                   
+  getCandidates.js      |    90.9 |      100 |     100 |    90.9 | 19                
+  root.js               |     100 |      100 |     100 |     100 |                   
+ middlewares            |   83.33 |      100 |      50 |   83.33 |                   
+  error.js              |   83.33 |      100 |      50 |   83.33 | 5                 
+ models                 |   91.66 |    66.66 |     100 |   91.66 |                   
+  candidate.js          |     100 |      100 |     100 |     100 |                   
+  index.js              |      90 |    66.66 |     100 |      90 | 13,30             
+ services               |     100 |       75 |     100 |     100 |                   
+  getCandidates.js      |     100 |    83.33 |     100 |     100 | 16                
+  populateCandidates.js |     100 |       50 |     100 |     100 | 11                
+ utils                  |   93.75 |       50 |   91.66 |     100 |                   
+  Regex.js              |     100 |      100 |     100 |     100 |                   
+  errorMessages.js      |     100 |      100 |     100 |     100 |                   
+  filters.js            |     100 |      100 |     100 |     100 |                   
+  validations.js        |   83.33 |       50 |   83.33 |     100 | 9                 
+------------------------|---------|----------|---------|---------|-------------------
+```
