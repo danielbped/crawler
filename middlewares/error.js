@@ -1,6 +1,9 @@
+const statusCode = require('http-status-codes').StatusCodes;
+const errorMessages = require('../utils/errorMessages');
+
 const error = async (_err, _req, res, _next) => {
-  console.log(_err);
-  res.status(500).end();
+  res.status(statusCode.INTERNAL_SERVER_ERROR)
+    .json({ message: errorMessages.internalServerError });
 };
 
 module.exports = (app) => {
