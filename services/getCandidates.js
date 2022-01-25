@@ -23,7 +23,7 @@ const getCandidates = async () => {
     if (!data) break;
 
     const candidates = await Promise.all(data.map(getCandidateByCpf));
-    console.log(candidates);
+
     populateCandidates(candidates);
 
     PAGE += 1
@@ -63,4 +63,7 @@ const getCandidateByCpf = async (cpf) => {
 
 module.exports = {
   getCandidates,
+  getCpfOnPage,
+  getCandidateByCpf,
+  getCandidateFiltered,
 }

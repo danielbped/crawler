@@ -9,4 +9,11 @@ module.exports = {
     host: process.env.HOSTNAME,
     dialect: 'mysql',
   },
+  test: {
+    username: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
+    database: 'crawler',
+    host: process.env.HOSTNAME,
+    dialect: 'mysql',
+  }
 };
