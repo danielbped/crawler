@@ -98,33 +98,33 @@ Este projeto foi desenvolvido utilizando a arquitetura MSC, que consiste em sepa
 Desta forma, o projeto está organizado e estruturado da seguinte forma:
 
 ```
-      |- .env
-      |- .README.md
-      |- api
-            |- index.js
-            |- server.js
-      |- config
-            |- config.js
-      |- controllers
-            |- getCandidates.js
-            |- root.js
-      |- middlewares
-            |- error.js
-      |- migrations
-            |- XXXXXXXXXXXXXX-create-user
-      |- models
-            |- candidate.js
-            |- index.js
-      |- services
-            |- getCandidates.js
-            |- populateCandidates.js
-      |- tests
-            |- getCandidatesApi.test.js
-      |- utils
-            |- errorMessages.js
-            |- filters.js
-            |- Regex.js
-            |- validations.js
+      ├── .env
+      ├── .README.md
+      ├── api
+            ├── index.js
+            ├── server.js
+      ├── config
+            ├── config.js
+      ├── controllers
+            ├── getCandidates.js
+            ├── root.js
+      ├── middlewares
+            ├── error.js
+      ├── migrations
+            ├── XXXXXXXXXXXXXX-create-user
+      ├── models
+            ├── candidate.js
+            ├── index.js
+      ├── services
+            ├── getCandidates.js
+            ├── populateCandidates.js
+      ├── tests
+            ├── getCandidatesApi.test.js
+      ├── utils
+            ├── errorMessages.js
+            ├── filters.js
+            ├── Regex.js
+            ├── validations.js
 ```
 
 ## SOLID <a name="solid"></a>
