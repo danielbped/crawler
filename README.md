@@ -96,7 +96,9 @@ Desta forma, o projeto está organizado e estruturado da seguinte forma:
 ```
       |- .env
       |- .README.md
-      |- index.js
+      |- api
+            |- index.js
+            |- server.js
       |- config
             |- config.js
       |- controllers
