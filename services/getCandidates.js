@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-// const io = require('../socket/io');
+require('dotenv').config();
 
 const {
   filterCpf,
@@ -11,11 +11,9 @@ const {
 } = require('../utils/filters');
 
 const { cpfIsValid } = require('../utils/validations');
+const { populateCandidates } = require('./populateCandidates');
 
-const candidateList = [];
-
-let PAGE = 4669;
-
+let PAGE = process.env.PAGE || 1;
 const INVALID_PAGE = 'Invalid page.';
 
 const getCandidates = async () => {
@@ -25,13 +23,11 @@ const getCandidates = async () => {
     if (!data) break;
 
     const candidates = await Promise.all(data.map(getCandidateByCpf));
-    
-    candidateList.push(...candidates);
+    console.log(candidates);
+    populateCandidates(candidates);
 
     PAGE += 1
   }
-
-  return candidateList;
 }
 
 const getCpfOnPage = async (PAGE) => {

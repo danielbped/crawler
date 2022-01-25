@@ -72,7 +72,10 @@ MYSQL_USER=root
 MYSQL_PASSWORD=password
 HOSTNAME=localhost
 PORT=3000
+PAGE=1
 ```
+
+> ⚠️ Por padrão, a busca irá da página 1 até a última página, caso queira alterar a página de início, é só informar na variável PAGE ⚠️
 
 > ⚠️ Lembre de trocar 'root' pelo seu nome de usuário no MySQL, e 'password' pela sua senha ⚠️
 
