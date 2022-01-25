@@ -1,25 +1,23 @@
-const { Candidate } = require('../models');
+// const { Candidate } = require('../models');
 
-const { getCandidates } = require('./getCandidates');
+// const { getCandidates } = require('./getCandidates');
 
-const { cpfIsValid, cpfAlreadyExists } = require('../utils/validations');
+// const { cpfAlreadyExists } = require('../utils/validations');
 
-const { removeSpecialCpf } = require('../utils/filters');
+// const populateCandidates = async () => {
+//   const candidates = await getCandidates();
 
-const populateCandidates = async () => {
-  const candidates = await getCandidates();
+//   const candidatesDB = await Candidate.findAll();
 
-  const candidatesDB = await Candidate.findAll();
+//   candidates.forEach((candidate) => {
+//     const { CPF } = candidate;
 
-  candidates.forEach((candidate) => {
-    const CPF = removeSpecialCpf(candidate.CPF);
-    
-    if (!cpfAlreadyExists(CPF, candidatesDB)) {
-      Candidate.create({ ...candidate, CPF, validCPF: cpfIsValid(candidate.CPF) });
-    }
-  });
-};
+//     if (!cpfAlreadyExists(CPF, candidatesDB)) {
+//       Candidate.create(candidate);
+//     }
+//   });
+// };
 
-module.exports = {
-  populateCandidates,
-};
+// module.exports = {
+//   populateCandidates,
+// };

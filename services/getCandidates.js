@@ -1,36 +1,57 @@
 const axios = require('axios');
 
-const { filterCpf, filterData, filterName, filterScore } = require('../utils/filters');
+// const io = require('../socket/io');
 
-const cpfList = [];
+const {
+  filterCpf,
+  filterData,
+  filterName,
+  filterScore,
+  removeSpecialCpf,
+} = require('../utils/filters');
 
-let PAGE = 4670;
+const { cpfIsValid } = require('../utils/validations');
+
+const candidateList = [];
+
+let PAGE = 4669;
 
 const INVALID_PAGE = 'Invalid page.';
 
-const getCpfOnPage = async (page) => {
-  const { data } = await axios({
-    method: 'GET',
-    url: `https://sample-university-site.herokuapp.com/approvals/${page}`,
-  });
-
-  if (data !== INVALID_PAGE) cpfList.push(...filterCpf(data));
-
-  return data;
-};
-
-const getCpfList = async () => {
-  let dataValid = true;
-
-  while(dataValid) {
+const getCandidates = async () => {
+  while(true) {
     const data = await getCpfOnPage(PAGE);
 
-    if (data === INVALID_PAGE) dataValid = false;
+    if (!data) break;
+
+    const candidates = await Promise.all(data.map(getCandidateByCpf));
+    
+    candidateList.push(...candidates);
 
     PAGE += 1
   }
 
-  return cpfList;
+  return candidateList;
+}
+
+const getCpfOnPage = async (PAGE) => {
+  const { data } = await axios({
+    method: 'GET',
+    url: `https://sample-university-site.herokuapp.com/approvals/${PAGE}`,
+  });
+
+  if (data !== INVALID_PAGE) return filterCpf(data);
+};
+
+const getCandidateFiltered = (data, cpf) => {
+  const name = filterName(data);
+  const score = filterScore(data);
+
+  const CPF = removeSpecialCpf(cpf);
+
+  const validCPF = cpfIsValid(CPF);
+
+  return { name, score, CPF, validCPF };
 }
 
 const getCandidateByCpf = async (cpf) => {
@@ -39,22 +60,10 @@ const getCandidateByCpf = async (cpf) => {
     url: `https://sample-university-site.herokuapp.com/candidate/${cpf}`,
   });
 
-  const data = filterData(response);
+  const data = await filterData(response);
 
-  const name = filterName(data);
-  const score = filterScore(data);
-
-  return { name, score, CPF: cpf }
+  return getCandidateFiltered(data, cpf);
 }
-
-const getCandidates= async () => {
-  const cpfList = await getCpfList();
-
-  const candidates = await Promise.all(cpfList.map(getCandidateByCpf));
-
-  return candidates;
-}
-
 
 module.exports = {
   getCandidates,

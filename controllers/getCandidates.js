@@ -2,12 +2,15 @@ const statusCode = require('http-status-codes').StatusCodes;
 
 const { Candidate } = require('../models')
 
-const { populateCandidates } = require('../services/populateCandidates');
+const io = require('../socket/io');
+
+// const { populateCandidates } = require('../services/populateCandidates');
+const { getCandidateList } = require('../services/getCandidates');
 
 const getCandidatesController = async (_req, res, next) => {
   try {
-    await populateCandidates();
-    
+    // await populateCandidates();
+    await getCandidateList();
     const candidatesDB = await Candidate.findAll({
       attributes: {
         exclude: ['createdAt', 'updatedAt'],

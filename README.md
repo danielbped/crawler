@@ -2,7 +2,7 @@
 
 # Projeto Crawler
 
-- Trata-se de um projeto com o objetivo de realizar a busca em um site que exibe o CPF de candidatos aprovados, e ao clicar em cada CPF, é exibido o nome e a nota do candidato. Esta busca consiste em capturar cada número de CPF, nome e nota de todos os candidatos. O site é dividido em aproximadamente 5 mil páginas, contendo 7 candidatos em cada uma delas, finalizando num total de aproximadamente 33 mil candidatos.
+- Trata-se de um projeto com o objetivo de realizar a busca em um site que exibe o CPF de candidatos aprovados, e ao clicar em cada CPF, é exibido o nome e a nota do candidato. Esta busca consiste em capturar cada número de CPF, nome e nota de todos os candidatos. O site é dividido em aproximadamente 5 mil páginas, contendo 10 candidatos em cada uma delas, finalizando num total de aproximadamente 50 mil candidatos.
 
 [Link do site](https://sample-university-site.herokuapp.com/approvals/1)
 
