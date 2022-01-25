@@ -35,6 +35,7 @@ Este projeto está sob licença do [MIT](https://github.com/danielbped/crawler/b
   - [**Sequelize**](https://www.npmjs.com/package/sequelize)
   - [**RegEx**](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Regular_Expressions)
   - [**Chai**](https://www.chaijs.com/)
+  - [**Mocha**](https://mochajs.org/)
   - [**Https Status Code**](https://www.npmjs.com/package/http-status-codes)
   - [**dotenv**](https://www.npmjs.com/package/dotenv)
   - [**Nodemon**](https://nodemon.io/)
@@ -216,7 +217,7 @@ Algumas funções de valiação foram necessárias, tanto como validar se o [CPF
 
 ### API <a name="teste-api"></a>
 
-Para realizar os testes da resposta da requisição da API, foi utilizada a biblioteca [Chai](https://www.chaijs.com/), com 95% de cobertura.
+Para realizar os testes da resposta da requisição da API, foi utilizada as bibliotecas [Chai](https://www.chaijs.com/) e [Mocha](https://mochajs.org/), com 95% de cobertura.
 
 ```
 ------------------------|---------|----------|---------|---------|-------------------
