@@ -89,6 +89,44 @@ PAGE=1
 npm start
 ```
 
+- Para visualizar o funcionamento da aplicação no navegador, é só acessar o `localhost:3000`
+> ⚠️ 3000 ou na porta que foi informada na variável PORT ⚠️
+
+- E para visualizar como as informações ficaram salvas no banco de dados é só seguir os seguinte passos no terminal:
+
+```
+mysql -uroot -p
+
+Digitar a sua senha (A mesma que foi informada na variável MYSQL_PASSWORD)
+
+SHOW DATABASES;
+
+USE CRAWLER;
+
+SHOW TABLES;
+
+SELECT * FROM Candidates;
+```
+
+- O resultado será parecido com o seguinte:
+```
++----+--------------------------------------------+-------+-------------+----------+---------------------+---------------------+
+| id | name                                       | score | CPF         | validCPF | createdAt           | updatedAt           |
++----+--------------------------------------------+-------+-------------+----------+---------------------+---------------------+
+|  1 | ANTHONY KING                               | 85.38 | 87645213035 |        1 | 2022-01-26 14:25:42 | 2022-01-26 14:25:42 |
+|  2 | ANNE CRAWFORD I II III IV V MD DDS PHD DVM | 72.03 | 87650413217 |        1 | 2022-01-26 14:25:42 | 2022-01-26 14:25:42 |
+|  3 | DAVID GONZALEZ                             | 94.53 | 87650123480 |        1 | 2022-01-26 14:25:42 | 2022-01-26 14:25:42 |
+|  4 | PHYLLIS RIVERA                             | 82.34 | 87650132471 |        1 | 2022-01-26 14:25:42 | 2022-01-26 14:25:42 |
+|  5 | JEREMY FREEMAN                             | 72.85 | 87651023471 |        1 | 2022-01-26 14:25:42 | 2022-01-26 14:25:42 |
+|  6 | JOYCE BAKER I II III IV V MD DDS PHD DVM   | 96.01 | 87651034244 |        1 | 2022-01-26 14:25:42 | 2022-01-26 14:25:42 |
+|  7 | MR. DR. LOUIS WILLIAMS                     | 72.94 | 87651043235 |        1 | 2022-01-26 14:25:42 | 2022-01-26 14:25:42 |
+|  8 | RICHARD PERRY                              | 88.15 | 87651204344 |        1 | 2022-01-26 14:25:42 | 2022-01-26 14:25:42 |
+|  9 | MARK KNIGHT                                | 98.45 | 87651230426 |        1 | 2022-01-26 14:25:42 | 2022-01-26 14:25:42 |
+| 10 | SHAWN BAKER                                | 91.34 | 87652013453 |        1 | 2022-01-26 14:25:42 | 2022-01-26 14:25:42 |
++----+--------------------------------------------+-------+-------------+----------+---------------------+---------------------+
+
+```
+
 # Organização e estruturação do projeto <a name="organizacao"></a>
 
 ## Arquitetura MSC <a name="msc"></a>
