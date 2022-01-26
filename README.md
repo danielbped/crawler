@@ -174,7 +174,7 @@ Para realizar a busca de todos os candidatos, a requisição não necessita de b
   
   - Status 500 (**INTERNAL_SERVER_ERROR**):
       
-      - 'Internal Server Error. Try again.'
+      - Internal Server Error. Try again.
 
 # Desenvolvimento <a name="desenvolvimento" ></a>
 
