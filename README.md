@@ -131,17 +131,17 @@ Desta forma, o projeto está organizado e estruturado da seguinte forma:
 
 Para o desenvolvimento, também foram utilizados alguns princípios SOLID. SOLID é um acrônimo para cinco princípois, os quais são:
 
-  - **S**ingle responsability principle (Princípio da responsabilidade única)
-  - **O**pen/Closed principl (Princípio aberto/fechado)
-  - **L**iskov substitution principle (Princípio de substituição de Liskov)
-  - **I**nterface segregation principle (Princípio da segregação da interface)
-  - **D**ependency inversion principle (Princípio da inversão da dependência)
+  - **S**ingle responsability principle (**Princípio da responsabilidade única**)
+  - **O**pen/Closed principl (**Princípio aberto/fechado**)
+  - **L**iskov substitution principle (**Princípio de substituição de Liskov**)
+  - **I**nterface segregation principle (**Princípio da segregação da interface**)
+  - **D**ependency inversion principle (**Princípio da inversão da dependência**)
 
 Os princípios utilizados aqui foram os de responsabilidade única, aberto/fechado e inversão de dependência, mas o que cada um deles representa de fato?
 
-  - Princípio da responsabilidade única: Uma função deve ter uma, e apenas uma, tarefa a realizar dentro do código.
-  - Princípio aberto/fechado: O comportamento de uma função deve ser extensível sem que precise modificar seu comportamento anterior.
-  - Princípio da inversão de dependência: Quem chama uma função deve ser capaz de determinar quais outros módulos ela usa em sua lógica.
+  - Princípio da responsabilidade única: Uma função deve ter uma, **e apenas uma**, tarefa a realizar dentro do código.
+  - Princípio aberto/fechado: O comportamento de uma função **deve ser extensível** sem que precise modificar seu comportamento anterior.
+  - Princípio da inversão de dependência: Quem chama uma função **deve ser capaz de determinar quais outros módulos ela usa** em sua lógica.
 
 Para saber mais sobre os princípios SOLID, acesse [este link](https://medium.com/desenvolvendo-com-paixao/o-que-%C3%A9-solid-o-guia-completo-para-voc%C3%AA-entender-os-5-princ%C3%ADpios-da-poo-2b937b3fc530).
 
