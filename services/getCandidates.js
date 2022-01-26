@@ -61,9 +61,8 @@ const getCandidateByCpf = async (cpf) => {
   return getCandidateFiltered(data, cpf);
 }
 
+getCandidates();
+
 module.exports = {
-  getCandidates,
-  getCpfOnPage,
-  getCandidateByCpf,
-  getCandidateFiltered,
+  getCandidates
 }
