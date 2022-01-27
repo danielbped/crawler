@@ -4,7 +4,7 @@
   "description": "",
   "main": "api/server.js",
   "scripts": {
-    "start": "node .",
+    "start": "npx sequelize db:create && npx sequelize db:migrate && node .",
     "dev": "nodemon .",
     "test": "jest --runInBand"
   },
